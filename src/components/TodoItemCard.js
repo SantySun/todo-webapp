@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 
 const TodoItemCard = (props) => {
@@ -54,7 +54,7 @@ const TodoItemCard = (props) => {
             title="Delete this task"
             onClick={onComplete}
           >
-            <span aria-hidden="true">Complete</span>
+            <span aria-hidden="true">{completed ? "Resume" : "Complete"}</span>
           </button>
         </div>
       </div>

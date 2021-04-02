@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 
 const TodoItemForm = (props) => {
-  const { onChange, onCancel, ...defaultValues } = props
+  const { onSave, onCancel, ...defaultValues } = props
   const [values, setValues] = useState(defaultValues)
 
   const onTaskUpdate = (field, value) => {
@@ -11,7 +11,7 @@ const TodoItemForm = (props) => {
   }
 
   const onSubmitForm = () => {
-    onChange(values)
+    onSave(values)
   }
 
   return (
@@ -24,7 +24,7 @@ const TodoItemForm = (props) => {
           type="text"
           className="form-control"
           id="todo-name"
-          placeholder="Enter your task..."
+          placeholder="Enter your task name..."
           value={values.name}
           onChange={(e) => {
             onTaskUpdate("name", e.target.value)
@@ -39,7 +39,7 @@ const TodoItemForm = (props) => {
           type="text"
           className="form-control"
           id="task-desc"
-          placeholder="Enter your task..."
+          placeholder="Enter your task content..."
           value={values.content}
           onChange={(e) => {
             onTaskUpdate("content", e.target.value)
@@ -73,7 +73,7 @@ const TodoItemForm = (props) => {
             onTaskUpdate("completed", e.target.checked)
           }}
         />
-        <label className="form-check-label" for="completed-checkbox">
+        <label className="form-check-label" htmlFor="completed-checkbox">
           Completed
         </label>
       </div>
@@ -91,9 +91,10 @@ const TodoItemForm = (props) => {
 
 TodoItemForm.propTypes = {
   name: PropTypes.string,
+  content: PropTypes.string,
   priority: PropTypes.oneOf(["High", "Medium", "Low"]),
   completed: PropTypes.bool,
-  onChange: PropTypes.func
+  onSave: PropTypes.func
 }
 
 export default TodoItemForm
