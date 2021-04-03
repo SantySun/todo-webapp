@@ -1,9 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
-
-import SortingRatioButtons from "./components/SortingRatioButtons"
-import TodoItemForm from "./components/TodoItemForm"
-import TodoItemCard from "./components/TodoItemCard"
-import App from "./App"
+import TodoItemForm from "../components/TodoItemForm"
+import TodoItemCard from "../components/TodoItemCard"
+import App from "../App"
 
 
 const task = {
@@ -93,8 +91,10 @@ test("resume a task", async () => {
 })
 
 test("delete a task", async () => {
+  window.confirm = jest.fn(() => true) 
   render(<App />)
   fireEvent.click(screen.queryAllByText(/^Delete$/)[0])
+  expect(window.confirm).toBeCalledWith("Delete this task?")
   await waitFor(() => screen.queryAllByText("Delete"))
   expect(screen.queryAllByText(/Delete/i)).toHaveLength(4)
   expect(screen.getByText(/total: 4 tasks/i)).toBeInTheDocument()
@@ -200,4 +200,16 @@ test("change field values", async () => {
   })
   await waitFor(() => screen.getByLabelText(/Completed/))
   expect(screen.getByLabelText(/Completed/)).toBeChecked(true)
+})
+
+test("change sorting method", async () => {
+  render(<App />)
+  fireEvent.click(screen.getByText(/Sort By Priority/i))
+  await waitFor(() => screen.getByText(/Sort By Priority/i))
+  expect(screen.getByLabelText(/Sort By Priority/i)).toBeChecked()
+  expect(screen.getByLabelText(/Sort By name/i)).not.toBeChecked()
+  fireEvent.click(screen.getByText(/Sort By Name/i))
+  await waitFor(() => screen.getByText(/Sort By Name/i))
+  expect(screen.getByLabelText(/Sort By Name/i)).toBeChecked()
+  expect(screen.getByLabelText(/Sort By Priority/i)).not.toBeChecked()
 })

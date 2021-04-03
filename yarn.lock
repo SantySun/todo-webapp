@@ -6497,6 +6497,11 @@ jest-snapshot@^26.6.0, jest-snapshot@^26.6.2:
     pretty-format "^26.6.2"
     semver "^7.3.2"
 
+jest-sorted@^1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/jest-sorted/-/jest-sorted-1.0.12.tgz#54884fe24d78c6bfa09f17d77f34d0bfe4feae89"
+  integrity sha512-k8cvANm+wuhFnOwAfFyeXnxCJlzpIEms4zjULzmL2XJ8EA7m7GMCV4cBgzhCiDTl7fEEc3fxGkDntSdaQcpeXA==
+
 jest-util@^26.6.0, jest-util@^26.6.2:
   version "26.6.2"
   resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-26.6.2.tgz#907535dbe4d5a6cb4c47ac9b926f6af29576cbc1"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import sampleTasks from "./sampleTasks"
 
 import TodoList from "./components/TodoList"
@@ -8,13 +8,10 @@ import TodoItemForm from "./components/TodoItemForm"
 import "bootstrap/dist/css/bootstrap.css"
 
 function App() {
-  const [tasks, setTasks] = useState(sampleTasks)
+  const [tasks, setTasks] = useState(sampleTasks || [])
   const [method, setMethod] = useState("Priority")
   const [isAddingTask, setIsAddingTask] = useState(false)
-  const [count, setCount] = useState({
-    total: sampleTasks.length,
-    completed: sampleTasks.filter((t) => t.completed).length
-  })
+
 
   const createNewTask = (values) => {
     const newTaskId = (new Date()).toISOString()
@@ -22,17 +19,10 @@ function App() {
     setIsAddingTask(false)
   }
 
-  useEffect(() => {
-    setCount({
-      total: tasks.length,
-      completed: tasks.filter((t) => t.completed).length
-    })
-  }, [tasks])
-
   return (
-    <div className="container card mt-3 p-3">
-      <h3>{`Total: ${count.total} tasks`}</h3>
-      <h3>{`Completed: ${count.completed} tasks`}</h3>
+    <div className="container p-3">
+      <h3>{`Total: ${tasks.length} tasks`}</h3>
+      <h3>{`Completed: ${tasks.filter((t) => t.completed).length} tasks`}</h3>
       <SortingRatioButtons method={method} onSelect={setMethod} />
       {isAddingTask ? (
         <TodoItemForm
