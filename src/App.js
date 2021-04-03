@@ -8,7 +8,7 @@ import TodoItemForm from "./components/TodoItemForm"
 import "bootstrap/dist/css/bootstrap.css"
 
 function App() {
-  const [tasks, setTasks] = useState(sampleTasks)
+  const [tasks, setTasks] = useState(sampleTasks || [])
   const [method, setMethod] = useState("Priority")
   const [isAddingTask, setIsAddingTask] = useState(false)
 
