@@ -2,7 +2,15 @@ import React from "react"
 import PropTypes from "prop-types"
 
 const TodoItemCard = (props) => {
-  const { name, content, priority, completed, onComplete, onEdit, onDelete } = props
+  const {
+    name,
+    content,
+    priority,
+    completed,
+    onComplete,
+    onEdit,
+    onDelete
+  } = props
 
   const getBackgroundColor = () => {
     let backgroundColor = "danger"
@@ -17,24 +25,22 @@ const TodoItemCard = (props) => {
   }
   return (
     <div
-      className={`list-group-item ${getBackgroundColor()} d-flex justify-content-between align-items-center p-3 m-1`}
+      className={`card border border-white rounded list-group-item ${getBackgroundColor()} d-flex justify-content-between align-items-center p-3 m-1`}
     >
       <div
         className="list-group-item flex-column align-items-start"
-        style={{ width: "100%", backgroundColor: completed ? "#ccc": "white" }}
+        style={{ width: "100%", backgroundColor: completed ? "#eee" : "white" }}
       >
         <div className="d-flex w-100 justify-content-between">
           <h4 className="mb-1">{name}</h4>
           <button
-            className="btn btn-danger"
+            className="btn btn-outline-danger btn-sm"
             id="delete"
             aria-label="Close"
             title="Delete this task"
             onClick={onDelete}
           >
-            <span style={{ color: "#fff" }}>
-             Delete
-            </span>
+            Delete
           </button>
         </div>
         <p className="mb-1">{content}</p>

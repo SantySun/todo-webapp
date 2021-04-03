@@ -1,9 +1,7 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react"
-
-import SortingRatioButtons from "./components/SortingRatioButtons"
-import TodoItemForm from "./components/TodoItemForm"
-import TodoItemCard from "./components/TodoItemCard"
-import App from "./App"
+import TodoItemForm from "../components/TodoItemForm"
+import TodoItemCard from "../components/TodoItemCard"
+import App from "../App"
 
 
 const task = {
@@ -200,4 +198,15 @@ test("change field values", async () => {
   })
   await waitFor(() => screen.getByLabelText(/Completed/))
   expect(screen.getByLabelText(/Completed/)).toBeChecked(true)
+})
+
+test("change sorting method", async () => {
+  render(<App />)
+  fireEvent.click(screen.getByText(/Sort By Priority/i))
+  await waitFor(() => screen.getByText(/Sort By Priority/i))
+  expect(screen.getByLabelText(/Sort By Priority/i)).toBeChecked()
+
+  fireEvent.click(screen.getByText(/Sort By Name/i))
+  await waitFor(() => screen.getByText(/Sort By Name/i))
+  expect(screen.getByLabelText(/Sort By Name/i)).toBeChecked()
 })
