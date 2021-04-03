@@ -23,6 +23,12 @@ const TodoItemCard = (props) => {
     }
     return `list-group-item-${backgroundColor}`
   }
+
+  const onDeleteClicked = () => {
+    if (window.confirm("Delete this task?")) (
+      onDelete()
+    )
+  }
   return (
     <div
       className={`card border border-white rounded list-group-item ${getBackgroundColor()} d-flex justify-content-between align-items-center p-3 m-1`}
@@ -38,7 +44,7 @@ const TodoItemCard = (props) => {
             id="delete"
             aria-label="Close"
             title="Delete this task"
-            onClick={onDelete}
+            onClick={onDeleteClicked}
           >
             Delete
           </button>
