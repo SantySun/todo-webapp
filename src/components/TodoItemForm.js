@@ -11,6 +11,9 @@ const TodoItemForm = (props) => {
   }
 
   const onSubmitForm = () => {
+    if (!values.name) {
+      return alert("Please enter task name!")
+    }
     onSave(values)
   }
 
