@@ -26,14 +26,14 @@ const TodoItemCard = (props) => {
         <div className="d-flex w-100 justify-content-between">
           <h4 className="mb-1">{name}</h4>
           <button
-            type="button"
-            className="close"
+            className="btn btn-danger"
+            id="delete"
             aria-label="Close"
             title="Delete this task"
             onClick={onDelete}
           >
-            <span aria-hidden="true" style={{ color: "#f00" }}>
-              &times;
+            <span style={{ color: "#fff" }}>
+             Delete
             </span>
           </button>
         </div>
@@ -51,7 +51,7 @@ const TodoItemCard = (props) => {
           <button
             type="button"
             className="btn btn-link btn-sm"
-            title="Delete this task"
+            title="Complete this task"
             onClick={onComplete}
           >
             <span aria-hidden="true">{completed ? "Resume" : "Complete"}</span>

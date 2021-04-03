@@ -3,7 +3,14 @@ import PropTypes from "prop-types"
 
 const TodoItemForm = (props) => {
   const { onSave, onCancel, ...defaultValues } = props
-  const [values, setValues] = useState(defaultValues)
+  const [values, setValues] = useState(
+    defaultValues.name ? defaultValues : {
+      name: "",
+      content: "",
+      priority: "High",
+      completed: false
+    }
+  )
 
   const onTaskUpdate = (field, value) => {
     const newValue = { ...values, [field]: value }
@@ -25,8 +32,8 @@ const TodoItemForm = (props) => {
         </label>
         <input
           type="text"
-          className="form-control"
           id="todo-name"
+          className="form-control"
           placeholder="Enter your task name..."
           value={values.name}
           onChange={(e) => {
@@ -61,9 +68,15 @@ const TodoItemForm = (props) => {
             onTaskUpdate("priority", e.target.value)
           }}
         >
-          <option key="high" value="High">High</option>
-          <option key="medium" value="Medium">Medium</option>
-          <option key="low" value="Low">Low</option>
+          <option key="high" value="High">
+            High
+          </option>
+          <option key="medium" value="Medium">
+            Medium
+          </option>
+          <option key="low" value="Low">
+            Low
+          </option>
         </select>
       </div>
       <div className="form-group form-check">

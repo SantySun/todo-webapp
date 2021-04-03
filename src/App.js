@@ -36,6 +36,7 @@ function App() {
       <SortingRatioButtons method={method} onSelect={setMethod} />
       {isAddingTask ? (
         <TodoItemForm
+          {...{}}
           onSave={createNewTask}
           onCancel={() => {
             setIsAddingTask(false)
