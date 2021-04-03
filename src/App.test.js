@@ -140,12 +140,8 @@ test("edit a task", async () => {
   expect(screen.queryAllByText(/^Complete$/i)).toHaveLength(4)
 })
 
-
-// components
-
-
 test("renders sort ratio buttons text", () => {
-  render(<SortingRatioButtons method="Priority" />)
+  render(<App />)
   const sortTextOne = screen.getByText(/sort by priority/i)
   const sortTextTwo = screen.getByText(/sort by name/i)
   expect(sortTextOne).toBeInTheDocument()
@@ -153,7 +149,7 @@ test("renders sort ratio buttons text", () => {
 })
 
 
-test("renders item content", () => {
+test("renders card item content", () => {
   render(<TodoItemCard {...task} />)
   expect(screen.getByText(/Todo Task 1/i)).toBeInTheDocument()
   expect(screen.getByText(/This is Todo Task One/i)).toBeInTheDocument()
@@ -163,7 +159,7 @@ test("renders item content", () => {
   expect(screen.getByText(/Delete/)).toBeInTheDocument()
 })
 
-test("display default value", () => {
+test("display form default value", () => {
   render(<TodoItemForm {...task} />)
   expect(screen.getByLabelText(/Task Name/)).toHaveValue("Todo Task 1")
   expect(screen.getByLabelText(/Task Description/)).toHaveValue(
