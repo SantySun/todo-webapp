@@ -4,12 +4,14 @@ import PropTypes from "prop-types"
 const TodoItemForm = (props) => {
   const { onSave, onCancel, ...defaultValues } = props
   const [values, setValues] = useState(
-    defaultValues.name ? defaultValues : {
-      name: "",
-      content: "",
-      priority: "High",
-      completed: false
-    }
+    defaultValues.name
+      ? defaultValues
+      : {
+          name: "",
+          content: "",
+          priority: "High",
+          completed: false
+        }
   )
 
   const onTaskUpdate = (field, value) => {
@@ -94,11 +96,11 @@ const TodoItemForm = (props) => {
         </label>
       </div>
       <div className="d-flex justify-content-between align-items-center">
-        <button className="btn btn-success m-1" onClick={onSubmitForm}>
-          Save
-        </button>
         <button className="btn btn-secondary m-1" onClick={onCancel}>
           Cancel
+        </button>
+        <button className="btn btn-success m-1" onClick={onSubmitForm}>
+          Save
         </button>
       </div>
     </div>
@@ -110,7 +112,8 @@ TodoItemForm.propTypes = {
   content: PropTypes.string,
   priority: PropTypes.oneOf(["High", "Medium", "Low"]),
   completed: PropTypes.bool,
-  onSave: PropTypes.func
+  onSave: PropTypes.func,
+  onCancel: PropTypes.func
 }
 
 export default TodoItemForm

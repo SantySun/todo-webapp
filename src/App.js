@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 import sampleTasks from "./sampleTasks"
-
 import TodoList from "./components/TodoList"
 import SortingRatioButtons from "./components/SortingRatioButtons"
 import TodoItemForm from "./components/TodoItemForm"
@@ -12,9 +11,8 @@ function App() {
   const [method, setMethod] = useState("Priority")
   const [isAddingTask, setIsAddingTask] = useState(false)
 
-
   const createNewTask = (values) => {
-    const newTaskId = (new Date()).toISOString()
+    const newTaskId = new Date().toISOString()
     setTasks([...tasks, { id: newTaskId, ...values }])
     setIsAddingTask(false)
   }
@@ -26,7 +24,6 @@ function App() {
       <SortingRatioButtons method={method} onSelect={setMethod} />
       {isAddingTask ? (
         <TodoItemForm
-          {...{}}
           onSave={createNewTask}
           onCancel={() => {
             setIsAddingTask(false)

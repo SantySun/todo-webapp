@@ -25,9 +25,9 @@ const TodoItemCard = (props) => {
   }
 
   const onDeleteClicked = () => {
-    if (window.confirm("Delete this task?")) (
+    if (window.confirm("Delete this task?")) {
       onDelete()
-    )
+    }
   }
   return (
     <div
@@ -42,7 +42,6 @@ const TodoItemCard = (props) => {
           <button
             className="btn btn-outline-danger btn-sm"
             id="delete"
-            aria-label="Close"
             title="Delete this task"
             onClick={onDeleteClicked}
           >
@@ -58,7 +57,7 @@ const TodoItemCard = (props) => {
             title="Edit this task"
             onClick={onEdit}
           >
-            <span aria-hidden="true">Edit</span>
+            Edit
           </button>
           <button
             type="button"
@@ -66,7 +65,7 @@ const TodoItemCard = (props) => {
             title="Complete this task"
             onClick={onComplete}
           >
-            <span aria-hidden="true">{completed ? "Resume" : "Complete"}</span>
+            {completed ? "Resume" : "Complete"}
           </button>
         </div>
       </div>

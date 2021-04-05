@@ -2,8 +2,7 @@ import React, { useState } from "react"
 import PropTypes from "prop-types"
 import TodoItemForm from "./TodoItemForm"
 import TodoItemCard from "./TodoItemCard"
-import { sortByName, sortByPriority} from "../util/sortTasks"
-
+import { sortByName, sortByPriority } from "../util/sortTasks"
 
 const TodoList = (props) => {
   const { tasks, setTasks, sortMethod } = props
@@ -23,7 +22,6 @@ const TodoList = (props) => {
     const finished = tasks.filter((t) => t.completed)
     return [...inProgress.sort(sortFunction), ...finished.sort(sortFunction)]
   }
-
 
   return (
     <div className="mt-3 mb-3" role="list">
